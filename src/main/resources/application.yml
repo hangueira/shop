@@ -1,0 +1,25 @@
+spring:
+  config.activate.on-profile: default
+  datasource:
+    url: jdbc:oracle:thin:@127.0.0.1:1521:XE
+    username: shop
+    password: 1234
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        # show_sql: true
+        format_sql: true
+  devtools:
+    livereload:
+      enabled: true
+  resources:
+    static-locations: file:src/main/resources/static/
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+logging.level:
+  org.hibernate.SQL: debug
+# org.hibernate.type: trace
