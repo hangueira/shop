@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+  </head>
+  <body>
+    <div th:fragment="header" class="bg-red-100">
+      <nav class="flex items-center justify-between p-4">
+        <button class="text-3xl font-bold"><a href="/">Shop</a></button>
+        <ul class="flex gap-7 bg-white">
+          <li><a href="/admin/item/new">상품등록</a></li>
+          <li><a href="/admin/items">상품관리</a></li>
+          <li><a href="/cart">장바구니</a></li>
+          <li><a href="/orders">구매이력</a></li>
+          <li><a href="/members/login">로그인</a></li>
+          <li><a href="/members/logout">로그아웃</a></li>
+        </ul>
+        <form th:action="@{/}" method="get">
+          <input
+            name="searchQuery"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button>Search</button>
+        </form>
+      </nav>
+    </div>
+  </body>
+</html>

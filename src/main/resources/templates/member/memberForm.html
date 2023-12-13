@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/layout1}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+  </head>
+  <th:block layout:fragment="script">
+    <script th:inline="javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+        const errorMessage = '[[${errorMessage}]]';
+        if (errorMessage !== null) {
+          alert('에러입니다');
+        }
+      });
+    </script>
+  </th:block>
+  <body>
+    <div layout:fragment="content" class="bg-yellow-100 flex-grow">
+      <form
+        th:action="@{/members/new}"
+        role="form"
+        method="post"
+        th:object="${memberFormDto}"
+        accept-charset="UTF-8"
+      >
+        <div>
+          <label th:for="name">이름</label>
+          <input
+            type="text"
+            th:field="*{name}"
+            placeholder="이름을 입력해주세요"
+          />
+          <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+            Incorrect data
+          </p>
+        </div>
+        <div>
+          <label th:for="email">이메일주소</label>
+          <input
+            type="email"
+            th:field="*{email}"
+            placeholder="이메일주소를 입력해주세요"
+          />
+          <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        </div>
+        <div>
+          <label th:for="password">비밀번호</label>
+          <input
+            type="password"
+            th:field="*{password}"
+            placeholder="비밀번호를 입력해주세요"
+          />
+          <p
+            th:if="${#fields.hasErrors('password')}"
+            th:errors="*{password}"
+          ></p>
+        </div>
+        <div>
+          <label th:for="address">주소</label>
+          <input
+            type="text"
+            th:field="*{address}"
+            placeholder="주소를 입력해주세요"
+          />
+          <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

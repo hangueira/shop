@@ -13,8 +13,10 @@ services:
       MYSQL_PASSWORD: 1234
       TZ: Asia/Seoul
     volumes:
+      - ./db/mysql/conf.d:/etc/mysql/conf.d
       - ./db/mysql/data:/var/lib/mysql
       - ./db/mysql/init:/docker-entrypoint-initdb.d
     platform: linux/x86_64
 
 ## docker-compose up -d
+## docker-compose down
