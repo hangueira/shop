@@ -1,7 +1,6 @@
 package com.hks.shop.controller;
 
-import com.hks.shop.MemberService;
-import com.hks.shop.constant.ItemSellStatus;
+import com.hks.shop.service.MemberService;
 import com.hks.shop.dto.MemberFormDto;
 import com.hks.shop.entity.Member;
 import jakarta.validation.Valid;
